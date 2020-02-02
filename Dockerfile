@@ -17,8 +17,8 @@ RUN apt-get update \
 # Install toolchain for RV32/RV64 from SiFive
 RUN wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz \
     && tar xf riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz \
-    && mv riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14 /opt/riscv64-toolcahin
-ENV PATH $PATH:/opt/riscv64-toolchain
+    && mv riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14 /opt/riscv64-toolchain
+ENV PATH $PATH:/opt/riscv64-toolchain/bin
 
 # Install QEMU for RV32/RV64 from SiFive
 RUN wget https://static.dev.sifive.com/dev-tools/riscv-qemu-4.1.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz \
