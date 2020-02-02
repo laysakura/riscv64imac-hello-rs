@@ -1,0 +1,9 @@
+[package]
+name = "riscv64imac-hello-rs"
+version = "0.1.0"
+authors = ["Sho Nakatani <lay.sakura@gmail.com>"]
+
+[dependencies]
+
+[build-dependencies]
+cc = "1.0"
