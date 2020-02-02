@@ -1,0 +1,8 @@
+[target.riscv32imac-unknown-none-elf]
+runner = "qemu-system-riscv32 -nographic -machine sifive_u -kernel"
+rustflags = [
+  "-C", "link-arg=-Tlinker.ld",
+]
+
+[build]
+target = "riscv32imac-unknown-none-elf"
