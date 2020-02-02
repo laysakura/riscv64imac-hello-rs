@@ -33,12 +33,16 @@ ENV PATH $PATH:$HOME/.cargo/bin
 
 # Install toolchain for RV32/RV64 from SiFive
 RUN mkdir /opt/riscv64-toolchain \
-    && curl -L https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt/riscv64-toolchain
-ENV PATH $PATH:/opt/riscv64-toolchain/bin
+    && curl -L https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt
+ENV PATH $PATH:/opt/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin
 
 # Install QEMU for RV32/RV64 from SiFive
 RUN mkdir /opt/qemu-riscv \
-    && curl -L https://static.dev.sifive.com/dev-tools/riscv-qemu-4.1.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt/qemu-riscv
-ENV PATH $PATH:/opt/qemu-riscv/bin
+    && curl -L https://static.dev.sifive.com/dev-tools/riscv-qemu-4.1.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt \
+    #
+    # Install QEMU's runtime dependencies w/ apt
+    && apt-get update \
+    && apt-get -y install libseccomp2 libpixman-1-0 libnuma1 libjpeg8 libglib2.0-0
+ENV PATH $PATH:/opt/riscv-qemu-4.1.0-2019.08.0-x86_64-linux-ubuntu14/bin
 
 CMD ["bash"]
