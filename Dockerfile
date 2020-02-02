@@ -24,12 +24,12 @@ RUN apt-get update \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     #
     # Add cross compilation target for RV32GC
-    && $HOME/.cargo/bin/rustup target add riscv32imac-unknown-none-elf \
+    && /root/.cargo/bin/rustup target add riscv32imac-unknown-none-elf \
     #
     # Install binutils for RV32GC
-    && $HOME/.cargo/bin/cargo install cargo-binutils \
-    && $HOME/.cargo/bin/rustup component add llvm-tools-preview
-ENV PATH $PATH:$HOME/.cargo/bin
+    && /root/.cargo/bin/cargo install cargo-binutils \
+    && /root/.cargo/bin/rustup component add llvm-tools-preview
+ENV PATH $PATH:/root/.cargo/bin
 
 # Install toolchain for RV32/RV64 from SiFive
 RUN mkdir /opt/riscv64-toolchain \
