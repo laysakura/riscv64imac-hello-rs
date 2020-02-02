@@ -1,6 +1,6 @@
 OUTPUT_ARCH("riscv")
 
-ENTRY(__start_rust)
+ENTRY(_start)
 EXTERN(abort);
 
 SECTIONS
