@@ -1,5 +1,5 @@
 .option norvc
-.section .reset.boot, "ax",@progbits
+.section .boot, "ax", @progbits
 .global _start
 .global abort
 

@@ -9,7 +9,7 @@ SECTIONS
 
     .reset : 
     {
-        KEEP(*(.reset.boot));
+        KEEP(*(.boot));
     }
 
     /* text: Program code section */
