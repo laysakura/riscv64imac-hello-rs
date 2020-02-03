@@ -9,7 +9,6 @@
 
 /* Declare global symbols used in this file. */
 .global _start
-.global abort
 
 _start:
     /* Set up stack pointer. */
