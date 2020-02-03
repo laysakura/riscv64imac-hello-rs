@@ -1,7 +1,14 @@
+/* Do not use RV64C. */
 .option norvc
-.section .reset.boot, "ax",@progbits
+
+/**
+ * `.boot` section starts here.
+ * This section is allocatable ("a"), executable ("x") and contains data ("@progbits").
+ */
+.section .boot, "ax", @progbits
+
+/* Declare global symbols used in this file. */
 .global _start
-.global abort
 
 _start:
     /* Set up stack pointer. */
@@ -10,6 +17,10 @@ _start:
     /* Now jump to the rust world; __start_rust.  */
     j       __start_rust
 
+/**
+ * `.bss` section, space for 0-initialized variables, starts here.
+ * Allocates 1024 bytes for stack between addresses of [stacks:, stacks: + 1024].
+ */
 .bss
 
 stacks:
