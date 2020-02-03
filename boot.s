@@ -1,5 +1,13 @@
+/* Do not use RV64C. */
 .option norvc
+
+/**
+ * `.boot` section starts here.
+ * This section is allocatable ("a"), executable ("x") and contains data ("@progbits").
+ */
 .section .boot, "ax", @progbits
+
+/* Declare global symbols used in this file. */
 .global _start
 .global abort
 
