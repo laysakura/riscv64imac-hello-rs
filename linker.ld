@@ -15,33 +15,28 @@ SECTIONS
 {
     /* Here boot loader (written in `.boot` section) starts from the address 0x80000000. */
     . = 0x80000000;
-    .reset : 
-    {
+    .reset : {
         KEEP(*(.boot));
     } > DRAM
 
     /* text: Program code */
-    .text :
-    {
+    .text : {
         *(.text. text.*);
     } > DRAM
 
     /* rodata: Read-only data */
-    .rodata :
-    {
+    .rodata : {
         *(.rdata .rodata. rodata.*);
     } > DRAM
 
     /* data: Writable data */
-    .data :
-    {
+    .data : {
         *(.data .data.*);
     } > DRAM
 
     /* bss: 0-initialized writable data */
     _bss_start = .;
-    .bss :
-    {
+    .bss : {
         *(.bss .bss.*);
     } > DRAM
 }
