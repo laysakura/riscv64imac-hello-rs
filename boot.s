@@ -17,6 +17,10 @@ _start:
     /* Now jump to the rust world; __start_rust.  */
     j       __start_rust
 
+/**
+ * `.bss` section, space for 0-initialized variables, starts here.
+ * Allocates 1024 bytes for stack between addresses of [stacks:, stacks: + 1024].
+ */
 .bss
 
 stacks:
