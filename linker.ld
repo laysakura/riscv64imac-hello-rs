@@ -13,7 +13,7 @@ MEMORY {
 
 SECTIONS
 {
-    /* Here boot loader (written in `.boot` section) starts from the address 0x80000000. */
+    /* The code boot loader invokes starts here from the address 0x80000000. */
     . = 0x80000000;
     .reset : {
         KEEP(*(.boot));
