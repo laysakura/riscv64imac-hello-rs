@@ -1,3 +1,4 @@
+# Uses `ubuntu` image (not `rust`) because SiFive's compiled tools work on Ubuntu 14.04.
 FROM ubuntu:14.04
 
 WORKDIR /setup
@@ -31,12 +32,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     && /root/.cargo/bin/rustup component add llvm-tools-preview
 ENV PATH $PATH:/root/.cargo/bin
 
-# Install toolchain for RV32/RV64 from SiFive
-RUN mkdir /opt/riscv64-toolchain \
-    && curl -L https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt
-ENV PATH $PATH:/opt/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin
-
-# Install QEMU for RV32/RV64 from SiFive
+# Install QEMU for RV32/RV64 from SiFive.
+# Check for the latest package here: https://www.sifive.com/boards
 RUN mkdir /opt/qemu-riscv \
     && curl -L https://static.dev.sifive.com/dev-tools/riscv-qemu-4.1.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt \
     #
@@ -44,5 +41,11 @@ RUN mkdir /opt/qemu-riscv \
     && apt-get update \
     && apt-get -y install libseccomp2 libpixman-1-0 libnuma1 libjpeg8 libglib2.0-0
 ENV PATH $PATH:/opt/riscv-qemu-4.1.0-2019.08.0-x86_64-linux-ubuntu14/bin
+
+# Install toolchain for RV32/RV64 from SiFive.
+# Check for the latest package here: https://www.sifive.com/boards
+RUN mkdir /opt/riscv64-toolchain \
+    && curl -L https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz | tar xz -C /opt
+ENV PATH $PATH:/opt/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin
 
 CMD ["bash"]
