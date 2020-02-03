@@ -1,8 +1,8 @@
-[target.riscv32imac-unknown-none-elf]
-runner = "qemu-system-riscv32 -nographic -bios none -machine virt -kernel"
+[target.riscv64imac-unknown-none-elf]
+runner = "qemu-system-riscv64 -nographic -bios none -machine virt -kernel"
 rustflags = [
   "-C", "link-arg=-Tlinker.ld",
 ]
 
 [build]
-target = "riscv32imac-unknown-none-elf"
+target = "riscv64imac-unknown-none-elf"

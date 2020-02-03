@@ -23,10 +23,10 @@ RUN apt-get update \
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     #
-    # Add cross compilation target for RV32GC
-    && /root/.cargo/bin/rustup target add riscv32imac-unknown-none-elf \
+    # Add cross compilation target for RV64GC
+    && /root/.cargo/bin/rustup target add riscv64imac-unknown-none-elf \
     #
-    # Install binutils for RV32GC
+    # Install binutils for RV64GC
     && /root/.cargo/bin/cargo install cargo-binutils \
     && /root/.cargo/bin/rustup component add llvm-tools-preview
 ENV PATH $PATH:/root/.cargo/bin
